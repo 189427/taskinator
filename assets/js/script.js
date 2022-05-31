@@ -225,10 +225,13 @@ var saveTasks = function() {
 // Iterates through a tasks array and creates task elements on the page from it.
 
 var loadTasks = function() {
-  localStorage.getItem("tasks", JSON.stringify(tasks));
-  console.log()
-
+  var savedTasks = localStorage.getItem("tasks");
+  if (!savedTasks) {
+    return false;
+    tasks = JSON.parse(tasks);
+  }
 }
+console.log()
 
 // Create a new task
 formEl.addEventListener("submit", taskFormHandler);
